@@ -1,6 +1,6 @@
-<h1 align="center">⚙️ cmd-tools</h1>
+<h1 align="left">⚙️ Cmd-Tools</h1>
 
-<p align="center">
+<p align="left">
   Ferramentas CMD para Windows.<br>
   Digite <code>ferramentas</code> no CMD e escolha, por número, qual script Python executar.
 </p>
@@ -23,12 +23,11 @@ Em vez de navegar por pastas e escrever comandos longos, você:
 
 <hr>
 
-<h2>📂 Estrutura básica</h2>
+<h2>📂 Estrutura </h2>
 
 <pre><code>ferramentas/              &lt;-- pasta adicionada ao PATH
 ├── ferramentas.bat       &lt;-- menu principal
 ├── conversor_imagem.py   &lt;-- exemplo de script
-├── outro_script.py
 └── ...
 </code></pre>
 
@@ -40,10 +39,10 @@ Em vez de navegar por pastas e escrever comandos longos, você:
 Exemplo simples de ficheiro <code>ferramentas.bat</code> que:
 </p>
 <ul>
-  <li>entra na pasta onde ele está</li>
-  <li>lista todos os <code>.py</code></li>
-  <li>mostra um menu numerado</li>
-  <li>executa o script escolhido com <code>python</code></li>
+  <li>Entra na pasta onde ele está</li>
+  <li>Lista todos os <code>.py</code></li>
+  <li>Mostra um menu numerado</li>
+  <li>Executa o script escolhido com <code>python</code></li>
 </ul>
 
 <pre><code>@echo off
@@ -105,6 +104,27 @@ exit /b
   <li>Fechar todas as janelas do CMD e abrir uma nova</li>
 </ol>
 
+<h2>✎ Criar e editar o ficheiro ferramentas.bat</h2>
+
+<p>
+O ficheiro <code>.bat</code> não abre no editor ao dar duplo clique, por isso o processo recomendado é criar primeiro um ficheiro de texto e só depois renomear.
+</p>
+
+<ol>
+  <li>Dentro da pasta <code>ferramentas</code>, crie um novo ficheiro <code>.txt</code>.</li>
+  <li>Cole dentro dele o código do menu.</li>
+  <li>Guarde e renomeie o ficheiro de <code>.txt</code> para <code>.bat</code>.</li>
+</ol>
+
+<p>
+Para editar o ficheiro novamente, utilize uma destas opções:
+</p>
+
+<ul>
+  <li><strong>Opção recomendada:</strong> Clique com o botão direito no ficheiro <code>.bat</code> → Abrir com → Bloco de notas.</li>
+  <li><strong>Opção alternativa:</strong> Apagar o ficheiro <code>.bat</code>, criar um novo <code>.txt</code> com o código atualizado e renomear novamente para <code>.bat</code>.</li>
+</ul>
+
 <hr>
 
 <h2>🚀 Como usar</h2>
@@ -120,9 +140,9 @@ Exemplo de saída:
 
 <pre><code>Lista de ferramentas (.py)
 
-1. conversor_imagem.py
-2. limpar_temp.py
-3. gerar_relatorio.py
+1. conversor_imagem.py   &lt;-- exemplo de script
+2. limpar_temp.py        &lt;-- exemplo de script
+3. gerar_relatorio.py    &lt;-- exemplo de script
 
 Escolha o numero: 1
 A executar: conversor_imagem.py
