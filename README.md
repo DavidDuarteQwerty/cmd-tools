@@ -1,8 +1,10 @@
-<h1 align="left">🔐 Gerador de Senhas Seguras</h1>
+# cmd-tools
+Ferramentas CMD para Windows. Você usa o comando ferramentas no CMD e vê uma lista numerada de scripts .py. Você escolhe um número e executa a ferramenta de forma rápida e direta.
+<h1 align="center">⚙️ cmd-tools</h1>
 
-<p align="left">
-  Utilitário em Python para gerar senhas aleatórias e seguras diretamente no terminal.<br>
-  Permite definir o tamanho da senha e os tipos de caracteres a utilizar.
+<p align="center">
+  Ferramentas CMD para Windows.<br>
+  Digite <code>ferramentas</code> no CMD e escolha, por número, qual script Python executar.
 </p>
 
 <hr>
@@ -10,81 +12,99 @@
 <h2>🔍 O que é</h2>
 
 <p>
-<code>password-generator-python</code> é um pequeno programa de linha de comandos que cria senhas fortes de forma automática.<br>
-Em vez de inventar senhas manualmente, o utilizador:
+<code>cmd-tools</code> é um atalho para os seus scripts Python no Windows.<br>
+Em vez de navegar por pastas e escrever comandos longos, você:
 </p>
 
 <ol>
-  <li>Executa o programa no terminal</li>
-  <li>Define o tamanho da senha</li>
-  <li>Escolhe os tipos de caracteres (letras, números e símbolos)</li>
-  <li>Recebe uma senha aleatória gerada de forma segura</li>
+  <li>Abre o CMD</li>
+  <li>Escreve <code>ferramentas</code></li>
+  <li>Escolhe um número na lista</li>
+  <li>O script <code>.py</code> é executado automaticamente</li>
 </ol>
 
 <hr>
 
-<h2>🎯 Objetivo</h2>
+<h2>📂 Estrutura básica</h2>
 
-<p>
-Este projeto foi desenvolvido como exercício prático em Python, com foco em:
-</p>
-
-<ul>
-  <li>Validação de dados introduzidos pelo utilizador</li>
-  <li>Manipulação de strings</li>
-  <li>Geração de valores aleatórios seguros</li>
-  <li>Organização de código em funções</li>
-</ul>
-
-<hr>
-
-<h2>📂 Estrutura</h2>
-
-<pre><code>password-generator-python/
-├── gerador_senhas.py   &lt;-- script principal
-└── README.md
+<pre><code>ferramentas/              &lt;-- pasta adicionada ao PATH
+├── ferramentas.bat       &lt;-- menu principal
+├── conversor_imagem.py   &lt;-- exemplo de script
+├── outro_script.py
+└── ...
 </code></pre>
 
 <hr>
 
-<h2>⚙️ Script principal (gerador_senhas.py)</h2>
+<h2>⚙️ Script principal (ferramentas.bat)</h2>
 
 <p>
-O script:
+Exemplo simples de ficheiro <code>ferramentas.bat</code> que:
 </p>
 <ul>
-  <li>Pede um tamanho de senha entre 8 e 64 caracteres</li>
-  <li>Pergunta quais os conjuntos de caracteres a utilizar</li>
-  <li>Gera a senha usando o módulo <code>secrets</code></li>
-  <li>Garante pelo menos um caractere de cada tipo selecionado</li>
-  <li>Apresenta a senha no ecrã</li>
+  <li>entra na pasta onde ele está</li>
+  <li>lista todos os <code>.py</code></li>
+  <li>mostra um menu numerado</li>
+  <li>executa o script escolhido com <code>python</code></li>
 </ul>
 
-<hr>
+<pre><code>@echo off
+cd %~dp0
 
-<h2>🔒 Segurança</h2>
+setlocal enabledelayedexpansion
+cls
+echo Lista de ferramentas (.py)
+echo.
 
-<p>
-A geração das senhas utiliza o módulo <code>secrets</code>, recomendado para criação de credenciais e tokens,
-em vez do módulo <code>random</code>, que não é indicado para fins criptográficos.
-</p>
+set i=0
+for %%f in (*.py) do (
+    set /a i+=1
+    set file!i!=%%f
+    echo !i!. %%f
+)
 
-<hr>
+echo.
+set /p escolha=Escolha o numero: 
 
-<h2>📌 Requisitos</h2>
+if not defined file%escolha% (
+    echo.
+    echo Opcao invalida.
+    pause
+    exit /b
+)
 
-<ul>
-  <li>Python 3.8 ou superior</li>
-</ul>
+set ficheiro=!file%escolha%!
+
+echo.
+echo A executar: %ficheiro%
+echo.
+
+python "%ficheiro%"
+
+endlocal
+exit /b
+</code></pre>
 
 <hr>
 
 <h2>🛠️ Instalação</h2>
 
 <ol>
-  <li>Instalar o Python 3</li>
-  <li>Clonar este repositório ou fazer download dos ficheiros</li>
-  <li>Abrir um terminal na pasta do projeto</li>
+  <li>Crie uma pasta, por exemplo: <code>C:\Users\SEU_NOME\ferramentas</code></li>
+  <li>Coloque dentro dessa pasta:
+    <ul>
+      <li>o ficheiro <code>ferramentas.bat</code></li>
+      <li>os seus scripts <code>.py</code></li>
+    </ul>
+  </li>
+  <li>Adicione essa pasta ao <strong>PATH</strong> do Windows:
+    <ul>
+      <li>Abrir “Variáveis de Ambiente”</li>
+      <li>Editar a variável <code>Path</code> do utilizador</li>
+      <li>Adicionar o caminho da pasta <code>ferramentas</code></li>
+    </ul>
+  </li>
+  <li>Fechar todas as janelas do CMD e abrir uma nova</li>
 </ol>
 
 <hr>
@@ -92,44 +112,31 @@ em vez do módulo <code>random</code>, que não é indicado para fins criptográ
 <h2>🚀 Como usar</h2>
 
 <ol>
-  <li>Abrir o terminal</li>
-  <li>Navegar até à pasta do projeto</li>
-  <li>Executar o comando:
-    <pre><code>python gerador_senhas.py</code></pre>
-  </li>
-  <li>Responder às perguntas apresentadas no ecrã</li>
+  <li>Abrir o CMD</li>
+  <li>Escrever: <code>ferramentas</code></li>
+  <li>Ver a lista numerada de scripts <code>.py</code></li>
+  <li>Digitar o número da ferramenta que quer executar</li>
 </ol>
 
-Exemplo de execução:
+Exemplo de saída:
 
-<pre><code>==================================
-   GERADOR DE SENHAS SEGURAS
-==================================
-Tamanho da senha (8 a 64): 12
-Incluir letras MAIÚSCULAS? (s/n): s
-Incluir letras minúsculas? (s/n): s
-Incluir números? (s/n): s
-Incluir símbolos? (s/n): s
+<pre><code>Lista de ferramentas (.py)
 
-Senha gerada:
-A7@kP2!qZ9#L
+1. conversor_imagem.py
+2. limpar_temp.py
+3. gerar_relatorio.py
+
+Escolha o numero: 1
+A executar: conversor_imagem.py
 </code></pre>
 
 <hr>
 
-<h2>💡 Possíveis melhorias</h2>
+<h2>💡 Ideias de scripts</h2>
 
 <ul>
-  <li>Gerar várias senhas numa única execução</li>
-  <li>Copiar automaticamente a senha para a área de transferência</li>
-  <li>Guardar senhas num ficheiro encriptado</li>
-  <li>Criar uma interface gráfica</li>
+  <li><code>conversor_imagem.py</code> – converter PNG para JPG</li>
+  <li><code>limpar_temp.py</code> – apagar ficheiros temporários</li>
+  <li><code>organizar_downloads.py</code> – organizar a pasta Downloads por tipo</li>
+  <li><code>backup_projeto.py</code> – fazer backup rápido de uma pasta</li>
 </ul>
-
-<hr>
-
-<h2>📄 Licença</h2>
-
-<p>
-Projeto de uso livre para fins académicos e pessoais.
-</p>
