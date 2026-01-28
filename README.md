@@ -6,7 +6,7 @@
   Digite <code>ferramentas</code> no CMD e escolha, por número, qual script Python executar.
 </p>
 
-<hr>
+
 
 <h2>🔍 O que é</h2>
 
