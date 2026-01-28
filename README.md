@@ -1,8 +1,7 @@
-# cmd-tools
-Ferramentas CMD para Windows. Você usa o comando ferramentas no CMD e vê uma lista numerada de scripts .py. Você escolhe um número e executa a ferramenta de forma rápida e direta.
-<h1 align="center">⚙️ cmd-tools</h1>
+<h1 align="left">⚙️ Cmd-Tools</h1>
 
 <p align="center">
+<p align="left">
   Ferramentas CMD para Windows.<br>
   Digite <code>ferramentas</code> no CMD e escolha, por número, qual script Python executar.
 </p>
