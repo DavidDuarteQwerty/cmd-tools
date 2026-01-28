@@ -1,8 +1,8 @@
-<h1 align="left">⚙️ Cmd-Tools</h1>
+<h1 align="left">🔐 Gerador de Senhas Seguras</h1>
 
 <p align="left">
-  Ferramentas CMD para Windows.<br>
-  Digite <code>ferramentas</code> no CMD e escolha, por número, qual script Python executar.
+  Utilitário em Python para gerar senhas aleatórias e seguras diretamente no terminal.<br>
+  Permite definir o tamanho da senha e os tipos de caracteres a utilizar.
 </p>
 
 <hr>
@@ -10,151 +10,126 @@
 <h2>🔍 O que é</h2>
 
 <p>
-<code>cmd-tools</code> é um atalho para os seus scripts Python no Windows.<br>
-Em vez de navegar por pastas e escrever comandos longos, você:
+<code>password-generator-python</code> é um pequeno programa de linha de comandos que cria senhas fortes de forma automática.<br>
+Em vez de inventar senhas manualmente, o utilizador:
 </p>
 
 <ol>
-  <li>Abre o CMD</li>
-  <li>Escreve <code>ferramentas</code></li>
-  <li>Escolhe um número na lista</li>
-  <li>O script <code>.py</code> é executado automaticamente</li>
+  <li>Executa o programa no terminal</li>
+  <li>Define o tamanho da senha</li>
+  <li>Escolhe os tipos de caracteres (letras, números e símbolos)</li>
+  <li>Recebe uma senha aleatória gerada de forma segura</li>
 </ol>
 
 <hr>
 
-<h2>📂 Estrutura </h2>
+<h2>🎯 Objetivo</h2>
 
-<pre><code>ferramentas/              &lt;-- pasta adicionada ao PATH
-├── ferramentas.bat       &lt;-- menu principal
-├── conversor_imagem.py   &lt;-- exemplo de script
-└── ...
+<p>
+Este projeto foi desenvolvido como exercício prático em Python, com foco em:
+</p>
+
+<ul>
+  <li>Validação de dados introduzidos pelo utilizador</li>
+  <li>Manipulação de strings</li>
+  <li>Geração de valores aleatórios seguros</li>
+  <li>Organização de código em funções</li>
+</ul>
+
+<hr>
+
+<h2>📂 Estrutura</h2>
+
+<pre><code>password-generator-python/
+├── gerador_senhas.py   &lt;-- script principal
+└── README.md
 </code></pre>
 
 <hr>
 
-<h2>⚙️ Script principal (ferramentas.bat)</h2>
+<h2>⚙️ Script principal (gerador_senhas.py)</h2>
 
 <p>
-Exemplo simples de ficheiro <code>ferramentas.bat</code> que:
+O script:
 </p>
 <ul>
-  <li>Entra na pasta onde ele está</li>
-  <li>Lista todos os <code>.py</code></li>
-  <li>Mostra um menu numerado</li>
-  <li>Executa o script escolhido com <code>python</code></li>
+  <li>Pede um tamanho de senha entre 8 e 64 caracteres</li>
+  <li>Pergunta quais os conjuntos de caracteres a utilizar</li>
+  <li>Gera a senha usando o módulo <code>secrets</code></li>
+  <li>Garante pelo menos um caractere de cada tipo selecionado</li>
+  <li>Apresenta a senha no ecrã</li>
 </ul>
 
-<pre><code>@echo off
-cd %~dp0
+<hr>
 
-setlocal enabledelayedexpansion
-cls
-echo Lista de ferramentas (.py)
-echo.
+<h2>🔒 Segurança</h2>
 
-set i=0
-for %%f in (*.py) do (
-    set /a i+=1
-    set file!i!=%%f
-    echo !i!. %%f
-)
+<p>
+A geração das senhas utiliza o módulo <code>secrets</code>, recomendado para criação de credenciais e tokens,
+em vez do módulo <code>random</code>, que não é indicado para fins criptográficos.
+</p>
 
-echo.
-set /p escolha=Escolha o numero: 
+<hr>
 
-if not defined file%escolha% (
-    echo.
-    echo Opcao invalida.
-    pause
-    exit /b
-)
+<h2>📌 Requisitos</h2>
 
-set ficheiro=!file%escolha%!
-
-echo.
-echo A executar: %ficheiro%
-echo.
-
-python "%ficheiro%"
-
-endlocal
-exit /b
-</code></pre>
+<ul>
+  <li>Python 3.8 ou superior</li>
+</ul>
 
 <hr>
 
 <h2>🛠️ Instalação</h2>
 
 <ol>
-  <li>Crie uma pasta, por exemplo: <code>C:\Users\SEU_NOME\ferramentas</code></li>
-  <li>Coloque dentro dessa pasta:
-    <ul>
-      <li>o ficheiro <code>ferramentas.bat</code></li>
-      <li>os seus scripts <code>.py</code></li>
-    </ul>
-  </li>
-  <li>Adicione essa pasta ao <strong>PATH</strong> do Windows:
-    <ul>
-      <li>Abrir “Variáveis de Ambiente”</li>
-      <li>Editar a variável <code>Path</code> do utilizador</li>
-      <li>Adicionar o caminho da pasta <code>ferramentas</code></li>
-    </ul>
-  </li>
-  <li>Fechar todas as janelas do CMD e abrir uma nova</li>
+  <li>Instalar o Python 3</li>
+  <li>Clonar este repositório ou fazer download dos ficheiros</li>
+  <li>Abrir um terminal na pasta do projeto</li>
 </ol>
-
-<h2>✎ Criar e editar o ficheiro ferramentas.bat</h2>
-
-<p>
-O ficheiro <code>.bat</code> não abre no editor ao dar duplo clique, por isso o processo recomendado é criar primeiro um ficheiro de texto e só depois renomear.
-</p>
-
-<ol>
-  <li>Dentro da pasta <code>ferramentas</code>, crie um novo ficheiro <code>.txt</code>.</li>
-  <li>Cole dentro dele o código do menu.</li>
-  <li>Guarde e renomeie o ficheiro de <code>.txt</code> para <code>.bat</code>.</li>
-</ol>
-
-<p>
-Para editar o ficheiro novamente, utilize uma destas opções:
-</p>
-
-<ul>
-  <li><strong>Opção recomendada:</strong> Clique com o botão direito no ficheiro <code>.bat</code> → Abrir com → Bloco de notas.</li>
-  <li><strong>Opção alternativa:</strong> Apagar o ficheiro <code>.bat</code>, criar um novo <code>.txt</code> com o código atualizado e renomear novamente para <code>.bat</code>.</li>
-</ul>
 
 <hr>
 
 <h2>🚀 Como usar</h2>
 
 <ol>
-  <li>Abrir o CMD</li>
-  <li>Escrever: <code>ferramentas</code></li>
-  <li>Ver a lista numerada de scripts <code>.py</code></li>
-  <li>Digitar o número da ferramenta que quer executar</li>
+  <li>Abrir o terminal</li>
+  <li>Navegar até à pasta do projeto</li>
+  <li>Executar o comando:
+    <pre><code>python gerador_senhas.py</code></pre>
+  </li>
+  <li>Responder às perguntas apresentadas no ecrã</li>
 </ol>
 
-Exemplo de saída:
+Exemplo de execução:
 
-<pre><code>Lista de ferramentas (.py)
+<pre><code>==================================
+   GERADOR DE SENHAS SEGURAS
+==================================
+Tamanho da senha (8 a 64): 12
+Incluir letras MAIÚSCULAS? (s/n): s
+Incluir letras minúsculas? (s/n): s
+Incluir números? (s/n): s
+Incluir símbolos? (s/n): s
 
-1. conversor_imagem.py   &lt;-- exemplo de script
-2. limpar_temp.py        &lt;-- exemplo de script
-3. gerar_relatorio.py    &lt;-- exemplo de script
-
-Escolha o numero: 1
-A executar: conversor_imagem.py
+Senha gerada:
+A7@kP2!qZ9#L
 </code></pre>
 
 <hr>
 
-<h2>💡 Ideias de scripts</h2>
+<h2>💡 Possíveis melhorias</h2>
 
 <ul>
-  <li><code>conversor_imagem.py</code> – converter PNG para JPG</li>
-  <li><code>limpar_temp.py</code> – apagar ficheiros temporários</li>
-  <li><code>organizar_downloads.py</code> – organizar a pasta Downloads por tipo</li>
-  <li><code>backup_projeto.py</code> – fazer backup rápido de uma pasta</li>
+  <li>Gerar várias senhas numa única execução</li>
+  <li>Copiar automaticamente a senha para a área de transferência</li>
+  <li>Guardar senhas num ficheiro encriptado</li>
+  <li>Criar uma interface gráfica</li>
 </ul>
+
+<hr>
+
+<h2>📄 Licença</h2>
+
+<p>
+Projeto de uso livre para fins académicos e pessoais.
+</p>
